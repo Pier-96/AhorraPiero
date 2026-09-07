@@ -1,0 +1,19 @@
+---
+description: Apple Design — fluid UI, materials, type, and motion for this app
+globs: src/**/*.{js,jsx,css}, index.html
+alwaysApply: false
+---
+
+# Apple Design (AhorraPiero)
+
+Follow `.agents/skills/apple-design/SKILL.md` (also `.cursor/skills/apple-design/SKILL.md`) when changing UI.
+
+Project mapping:
+
+- **Response:** instant press feedback (`.pressable` / `:active` scale). Never wait for click to highlight.
+- **Materials:** frosted chrome (`.chrome`) for header and tab bar; content scrolls underneath. Do not stack light glass on light glass.
+- **Type:** `system-ui`; large titles use tight leading and negative tracking (`.display`); body tracking near `0`. Space in `rem`.
+- **Springs:** CSS transitions only for non-gesture UI (100ms press). Gesture-driven motion must be interruptible springs — do not use `@keyframes` for drag/sheets.
+- **Reduced motion:** opacity cross-fades, no overshoot. Honor `prefers-reduced-transparency` and `prefers-contrast`.
+- **Wayfinding:** specific nav labels (Resumen, Subir PDF, Revisión, Gráficas, Inversión). Close/back stays spatially consistent.
+- **Labels:** map controls next to what they change; confirm only destructive irreversible actions.

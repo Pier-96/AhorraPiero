@@ -84,7 +84,7 @@ const titles = {
   "/inversion": "Inversión",
 };
 
-export default function Layout() {
+export default function Layout({ onLogout }) {
   const { pathname } = useLocation();
   const title = titles[pathname] || "AhorraPiero";
 
@@ -97,7 +97,10 @@ export default function Layout() {
           <p className="text-[13px] font-semibold tracking-tight text-[color:var(--muted)]">
             AhorraPiero
           </p>
-          <ThemeToggle />
+          <div className="flex items-center gap-1">
+            <button type="button" className="pressable h-8 rounded-full px-2 text-[12px] font-medium text-[color:var(--muted)]" onClick={onLogout}>Salir</button>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
       <main className="flex-1 w-full max-w-3xl mx-auto px-4 pt-3 pb-[calc(5.5rem+env(safe-area-inset-bottom))]">

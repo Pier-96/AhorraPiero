@@ -161,6 +161,14 @@ body {
     color: var(--fg);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
   }
+
+  .access-card {
+    background: var(--material);
+    border: 1px solid var(--material-edge);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {

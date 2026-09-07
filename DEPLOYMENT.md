@@ -12,7 +12,8 @@
 1. Crea un **Web Service** importando el repositorio del backend.
 2. Configura `Build Command` como `npm ci` y `Start Command` como `npm start`.
 3. Añade las variables privadas que ya utilizas localmente: `GEMINI_API_KEY`, `GEMINI_MODEL`, `GOOGLE_SHEET_ID`, `GOOGLE_CREDENTIALS_JSON` y `APORTACION_FIJA_INVERSION`. Añade también `FRONTEND_ORIGIN=https://ahorra-piero.vercel.app`.
-4. No definas `PORT`: Render lo proporciona automáticamente.
-5. Comprueba `https://ahorrapiero-api.onrender.com/api/health` tras el despliegue.
+4. Añade como secretos `APP_PASSWORD` (tu contraseña de acceso) y `SESSION_SECRET` (una cadena aleatoria larga distinta, por ejemplo el resultado de `openssl rand -hex 32`).
+5. No definas `PORT`: Render lo proporciona automáticamente.
+6. Comprueba `https://ahorrapiero-api.onrender.com/api/health` tras el despliegue.
 
 Render Free entra en reposo tras inactividad; la primera consulta puede tardar alrededor de un minuto. No guardes extractos en el disco del servidor: Render Free usa almacenamiento efímero. Esta API ya procesa el PDF en memoria y conserva datos en Google Sheets, por lo que es compatible.

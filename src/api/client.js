@@ -1,5 +1,14 @@
 // En desarrollo se usa el proxy de Vite; en producción apunta a Render.
 const BASE = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+const TOKEN_KEY = "ahorrapiero-session";
+
+export function getSessionToken() {
+  return sessionStorage.getItem(TOKEN_KEY);
+}
+
+export function clearSession() {
+  sessionStorage.removeItem(TOKEN_KEY);
+}
 
 async function request(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
@@ -8,6 +17,7 @@ async function request(path, options = {}) {
       ...(options.body instanceof FormData
         ? {}
         : { "Content-Type": "application/json" }),
+      ...(getSessionToken() ? { Authorization: `Bearer ${getSessionToken()}` } : {}),
       ...(options.headers || {}),
     },
   });
@@ -20,7 +30,9 @@ async function request(path, options = {}) {
     } catch {
       /* ignore */
     }
-    throw new Error(message);
+    const error = new Error(message);
+    error.status = res.status;
+    throw error;
   }
 
   if (res.status === 204) return null;
@@ -30,6 +42,19 @@ async function request(path, options = {}) {
 }
 
 export const api = {
+  async login(password) {
+    const data = await request("/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ password }),
+    });
+    sessionStorage.setItem(TOKEN_KEY, data.token);
+    return data;
+  },
+
+  getSession() {
+    return request("/auth/session");
+  },
+
   uploadPdf(file, mes) {
     const fd = new FormData();
     fd.append("pdf", file);

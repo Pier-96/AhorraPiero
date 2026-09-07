@@ -20,6 +20,15 @@ export default function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const lock = () => {
+      clearSession();
+      setStatus("locked");
+    };
+    window.addEventListener("ahorrapiero:unauthorized", lock);
+    return () => window.removeEventListener("ahorrapiero:unauthorized", lock);
+  }, []);
+
   if (status === "checking") return <div className="min-h-full" aria-busy="true" />;
   if (status === "locked") return <AccessGate onAccess={() => setStatus("ready")} />;
 

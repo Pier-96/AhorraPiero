@@ -32,6 +32,7 @@ async function request(path, options = {}) {
     }
     const error = new Error(message);
     error.status = res.status;
+    if (res.status === 401) window.dispatchEvent(new Event("ahorrapiero:unauthorized"));
     throw error;
   }
 
@@ -67,10 +68,6 @@ export const api = {
     return request(`/movimientos${q}`);
   },
 
-  getMeses() {
-    return request("/movimientos/meses");
-  },
-
   updateMovimiento(id, patch) {
     return request(`/movimientos/${id}`, {
       method: "PATCH",
@@ -97,9 +94,6 @@ export const api = {
     });
   },
 
-  getConfig() {
-    return request("/config");
-  },
 };
 
 export const CATEGORIAS = [
@@ -119,8 +113,6 @@ export const CATEGORIAS = [
 ];
 
 export const SUBCATEGORIAS_SUMINISTROS = ["Luz", "Agua", "Gas", "Internet", "Mixto"];
-
-export const TIPOS = ["gasto", "ingreso"];
 
 export function formatEuros(n) {
   if (n == null || Number.isNaN(n)) return "—";

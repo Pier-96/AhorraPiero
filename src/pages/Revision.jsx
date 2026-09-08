@@ -110,10 +110,9 @@ export default function Revision() {
             return (
               <div
                 key={m.id}
-                className={`rounded-2xl border p-3 shadow-[0_8px_28px_rgba(0,0,0,0.06)] ${
-                  dirty ? "border-brand-300" : "border-[color:var(--hairline)]"
+                className={`app-card rounded-3xl p-4 ${
+                  dirty ? "!border-brand-500" : ""
                 }`}
-                style={{ background: "var(--surface)" }}
               >
                 <div className="flex justify-between items-start gap-2">
                   <div className="min-w-0">
@@ -123,9 +122,10 @@ export default function Revision() {
                     </p>
                   </div>
                   <span
-                    className={`text-sm font-semibold ${
+                    className={`rounded-lg px-2 py-1 text-sm font-bold ${
                       m.importe < 0 ? "text-rose-600" : "text-brand-600"
                     }`}
+                    style={{ background: m.importe < 0 ? "rgba(244, 63, 94, 0.10)" : "var(--accent-soft)" }}
                   >
                     {formatEuros(m.importe)}
                   </span>

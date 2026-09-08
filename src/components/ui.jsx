@@ -1,11 +1,10 @@
 export function Card({ title, children, className = "" }) {
   return (
     <section
-      className={`rounded-2xl p-4 shadow-[0_8px_28px_rgba(0,0,0,0.06)] border border-[color:var(--hairline)] ${className}`}
-      style={{ background: "var(--surface)" }}
+      className={`app-card rounded-3xl p-4 sm:p-5 ${className}`}
     >
       {title && (
-        <h2 className="text-[13px] font-semibold text-[color:var(--muted)] mb-3 tracking-[0.01em]">
+        <h2 className="eyebrow mb-4">
           {title}
         </h2>
       )}
@@ -22,7 +21,7 @@ export function Stat({ label, value, tone = "default" }) {
   };
   return (
     <div>
-      <p className="text-[12px] text-[color:var(--muted)] leading-snug">{label}</p>
+      <p className="text-[12px] font-medium text-[color:var(--muted)] leading-snug">{label}</p>
       <p
         className={`mt-0.5 text-[1.375rem] font-semibold leading-tight tracking-[-0.02em] ${tones[tone]}`}
       >
@@ -42,7 +41,7 @@ export function Button({
   const variants = {
     primary: "btn-primary",
     ghost:
-      "rounded-xl px-3 py-2 text-sm font-medium bg-brand-50 text-brand-700",
+      "rounded-xl px-3 py-2 text-sm font-semibold bg-brand-50 text-brand-700",
   };
   return (
     <button

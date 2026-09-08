@@ -93,9 +93,9 @@ export default function Layout({ onLogout }) {
       <header
         className="chrome chrome-top sticky top-0 z-20 pt-[env(safe-area-inset-top)]"
       >
-        <div className="px-4 py-1.5 flex items-center justify-between gap-3">
-          <p className="text-[13px] font-semibold tracking-tight text-[color:var(--muted)]">
-            AhorraPiero
+        <div className="max-w-3xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
+          <p className="text-[13px] font-bold tracking-[-0.01em] text-[color:var(--fg)]">
+            Ahorra<span className="text-brand-600">Piero</span>
           </p>
           <div className="flex items-center gap-1">
             <button type="button" className="pressable h-8 rounded-full px-2 text-[12px] font-medium text-[color:var(--muted)]" onClick={onLogout}>Salir</button>
@@ -103,8 +103,8 @@ export default function Layout({ onLogout }) {
           </div>
         </div>
       </header>
-      <main className="flex-1 w-full max-w-3xl mx-auto px-4 pt-3 pb-[calc(5.5rem+env(safe-area-inset-bottom))]">
-        <h1 className="display mb-4">{title}</h1>
+      <main className="flex-1 w-full max-w-3xl mx-auto px-4 pt-5 pb-[calc(5.75rem+env(safe-area-inset-bottom))]">
+        <h1 className="display mb-5">{title}</h1>
         <Outlet />
       </main>
       <nav
@@ -117,8 +117,8 @@ export default function Layout({ onLogout }) {
               key={l.to}
               to={l.to}
               end={l.end}
-              className={({ isActive }) =>
-                `pressable flex flex-col items-center gap-0.5 py-2 text-[10px] font-medium ${
+            className={({ isActive }) =>
+                `pressable flex flex-col items-center gap-0.5 py-2.5 text-[10px] font-semibold ${
                   isActive ? "text-brand-600" : "text-[color:var(--muted)]"
                 }`
               }

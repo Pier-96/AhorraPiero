@@ -53,9 +53,10 @@ export default function SubirPDF() {
             <label className="block text-[13px] text-[color:var(--muted)] mb-1">
               Archivo PDF
             </label>
-            <label className="block rounded-2xl border border-dashed border-[color:var(--hairline)] p-4 text-center cursor-pointer pressable" style={{ background: "rgba(118, 118, 128, 0.06)" }}>
-              <span className="block text-sm font-medium">{file ? file.name : "Elige tu extracto en PDF"}</span>
-              <span className="mt-1 block text-xs text-[color:var(--muted)]">El archivo se procesará y preparará para tu revisión.</span>
+            <label className="block rounded-3xl border-2 border-dashed border-[color:var(--hairline)] px-4 py-7 text-center cursor-pointer pressable" style={{ background: "var(--surface-muted)" }}>
+              <span className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-lg text-brand-700" aria-hidden>↑</span>
+              <span className="block text-sm font-semibold">{file ? file.name : "Elige tu extracto en PDF"}</span>
+              <span className="mt-1.5 block text-xs leading-relaxed text-[color:var(--muted)]">El archivo se procesará y preparará para tu revisión.</span>
               <input type="file" accept="application/pdf" onChange={onSelect} className="sr-only" />
             </label>
           </div>
